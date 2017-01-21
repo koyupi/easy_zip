@@ -1,5 +1,5 @@
 require "easy_zip/version"
-require 'zlib'
+require "easy_zip/file"
 
 # easy zip module.
 module EasyZip
@@ -12,26 +12,15 @@ module EasyZip
     # @return [Array] file lines.
     def self.read_lines(filepath)
 
-      lines = nil
-      # read gzip file, and read all lines.
-      Zlib::GzipReader.open(filepath) { |gz|
-        lines = gz.readlines
-      }
-
-      lines
+      EasyZip::File.read_lines(filepath)
     end
 
     # write all lines to gzip file.
     # @param [String] filepath write filepath.
-    # @param [Array] lines write lines.
-    def self.write_lines(filepath, lines)
+    # @param [String / Array] values write value or lines(Array).
+    def self.write_lines(filepath, values)
 
-      Zlib::GzipWriter.open(filepath) { |gz|
-        # write to gzip file.
-        lines.each { |line|
-          gz.puts(line)
-        }
-      }
+      EasyZip::File.write_lines(filepath, values)
     end
   end
 end

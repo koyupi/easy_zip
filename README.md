@@ -26,6 +26,8 @@ Or install it yourself as:
 ```ruby
 # read lines from gzip.
 EasyZip::Gzip.read_lines('read gzip filepath')
+# write value to gzip.
+EasyZip::Gzip.write_lines('write gzip filepath', 'write value')
 # write lines to gzip.
 EasyZip::Gzip.write_lines('write gzip filepath', ['first', 'second', 'third'])
 ```
