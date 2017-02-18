@@ -30,6 +30,11 @@ EasyZip::Gzip.read_lines('read gzip filepath')
 EasyZip::Gzip.write_lines('write gzip filepath', 'write value')
 # write lines to gzip.
 EasyZip::Gzip.write_lines('write gzip filepath', ['first', 'second', 'third'])
+
+# compress string.
+EasyZip::Gzip.compress('target string')
+# decompress string.
+EasyZip::Gzip.decompress('target string')
 ```
 
 ## Development

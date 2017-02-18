@@ -1,5 +1,6 @@
 require "easy_zip/version"
 require "easy_zip/file"
+require "easy_zip/strings"
 
 # easy zip module.
 module EasyZip
@@ -21,6 +22,25 @@ module EasyZip
     def self.write_lines(filepath, values)
 
       EasyZip::File.write_lines(filepath, values)
+    end
+
+    # compress string.
+    # @param [String] str compress string.
+    # @param [Integer] level compress level. reference Zlib.
+    # @return [String] compress string.
+    def self.compress(str, level = Zlib::BEST_SPEED)
+
+      # compress string.
+      EasyZip::Strings.compress(str, level)
+    end
+
+    # decompress string.
+    # @param [String] str decompress string.
+    # @return [String] decompress string.
+    def self.decompress(str)
+
+      # decompress string.
+      EasyZip::Strings.decompress(str)
     end
   end
 end

@@ -6,6 +6,7 @@ describe EasyZip do
   let (:gzip_file) { 'C:\GitHub\test.gz' }
   let (:gzip_value) { 'value' }
   let (:gzip_lines) { ['first line.', 'second line.', 'third_line.'] }
+  let (:compress_str) { 'compress string' }
 
   it 'has a version number' do
     expect(EasyZip::VERSION).not_to be nil
@@ -56,5 +57,20 @@ describe EasyZip do
     expect(gzip_lines[2]).to eq lines[2].chomp
 
     File.delete(gzip_file)
+  end
+
+  it 'compress test' do
+
+    test_str = EasyZip::Gzip.compress(compress_str)
+    # puts test_str
+    expect(test_str).to be_truthy
+  end
+
+  it 'decompress test' do
+
+    test_str = EasyZip::Gzip.compress(compress_str)
+    test_str = EasyZip::Gzip.decompress(test_str)
+    # puts test_str
+    expect(compress_str).to eq test_str
   end
 end
